@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar class="motohub" color="transparent">
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="."></ion-back-button>
+      </ion-buttons>
+      <ion-icon slot="end" name="create" style="margin-right: 5%;"></ion-icon>
+      </ion-toolbar>
+  </ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="7">
+        <h1>Hi, I'm {{profile.nombre}}</h1>
+      </ion-col>
+      <ion-col size="5">
+          <div class="avatar2">
+            <p class="ion-text-center" style="font-size: 30px; color: white; ">{{i_nombre}}{{i_apellido}}</p>
+          </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+          <ion-item color="transparent">
+              <ion-icon slot="start" name="at" color="dark"></ion-icon>
+              <ion-label>{{profile.correo}}</ion-label>
+          </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <ion-item color="transparent">
+            <ion-icon slot="start" name="call" color="dark"></ion-icon>
+            <ion-label>{{profile.telefono_fijo}}</ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+          <ion-item color="transparent">
+              <ion-icon slot="start" name="logo-whatsapp" color="dark"></ion-icon>
+              <ion-label>+52 1{{profile.celular}}</ion-label>
+          </ion-item>
+      </ion-col>
+    </ion-row>
+    
+  </ion-grid>
+
+</ion-content>

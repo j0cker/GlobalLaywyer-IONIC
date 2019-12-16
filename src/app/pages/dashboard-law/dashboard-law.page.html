@@ -1,0 +1,88 @@
+<ion-header>
+    <ion-toolbar class="motohub" color="">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="."></ion-back-button>
+        </ion-buttons>
+
+        <ion-icon slot="end" name="create" style="margin-right: 4%;"></ion-icon>
+      </ion-toolbar>
+    </ion-header>
+  
+
+<ion-content class="ion-padding">
+
+    <ion-grid>
+        <ion-row>
+            <ion-col size="9">
+                <h1>Hi, I'm {{profile.nombre}}</h1>
+                <span> Cédula Profesional: {{profile.cedula}}</span>
+            </ion-col>
+            <ion-col size="3">
+                <div class="avatar2">
+                    <p class="ion-text-center" style="font-size: 30px; color: white; ">{{i_nombre}}{{i_apellido}}</p>
+                </div>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="12">
+                <ion-item color="transparent">
+                    <ion-icon slot="start" name="at" color="dark"></ion-icon>
+                    <ion-label>{{profile.correo}}</ion-label>
+                </ion-item>
+            </ion-col>
+            <ion-col size="12">
+                <ion-item color="transparent">
+                    <ion-icon slot="start" name="call" color="dark"></ion-icon>
+                    <ion-label>+52 1{{profile.celular}}</ion-label>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <hr style="height: 2px; width: 100%; float: left; background-color: #f4f5f8;">
+        <br>
+        <ion-row>
+            <h5>Formación Laboral</h5>
+            <ion-col size="12">
+                <ion-item color="transparent">
+                    <ion-icon slot="start" name="home" color="dark"></ion-icon>
+                    <ion-label>{{profile.address}}</ion-label>
+                </ion-item>
+            </ion-col>    
+            <ion-col size="12">
+                <ion-item color="transparent">
+                    <ion-icon slot="start" name="chatboxes" color="dark"></ion-icon>
+                    <ion-label>{{idiomas}}</ion-label>
+                </ion-item>
+            </ion-col>
+            <ion-col size="12">
+                <ion-item color="transparent">
+                    <ion-icon slot="start" name="calendar" color="dark"></ion-icon>
+                    <ion-label>{{diasLaborales}}</ion-label>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <hr style="height: 2px; width: 100%; float: left; background-color: #f4f5f8;">
+        <br>
+        <ion-row>
+            <h5>Formación Educativa</h5>
+            <ion-col size="12">
+                <ion-item color="transparent">
+                    <ion-icon slot="start" name="school" color="dark"></ion-icon>
+                    <ion-label>{{profile.escuela}}</ion-label>
+                </ion-item>
+            </ion-col>    
+            <ion-col size="12">
+                <ion-item color="transparent">
+                    <ion-icon slot="start" name="bookmark" color="dark"></ion-icon>
+                    <ion-label>{{profile.carrera}}</ion-label>
+                </ion-item>
+            </ion-col>
+            <ion-col size="12">
+                <ion-item color="transparent">
+                    <ion-icon slot="start" name="school" color="dark"></ion-icon>
+                    <ion-label>{{profile.mesTermino}} / {{profile.anoTermino}}</ion-label>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

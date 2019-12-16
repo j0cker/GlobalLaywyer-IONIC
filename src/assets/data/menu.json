@@ -1,0 +1,12 @@
+[
+    {
+        "icon": "home",
+        "name": "Inicio",
+        "redirectTo": "/dashboard"
+    },
+    {
+        "icon": "person",
+        "name": "Perfil",
+        "redirectTo": "/perfil"
+    }
+]

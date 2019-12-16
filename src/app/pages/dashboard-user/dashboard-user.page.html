@@ -1,0 +1,52 @@
+<ion-header>
+    <ion-toolbar class="balance" color="transparent">
+        <ion-title id="titulo" style="color: white">
+            <img src="../../assets/img/GL-blanco.png" alt="" style="max-width: 20%; margin-top: 2%; margin-left: 40%;">
+        </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="ion-padding">
+  
+    <h1 class="ion-text-center">Abogados Encontrados</h1>
+  
+      
+    <ion-card *ngFor="let abogado of abogados" class="list-group-item balance" color="transparent" (click)="cv(abogado.id_abogado)">
+      <ion-card-header>
+        <ion-card-subtitle style="color:white;">{{abogado.especialidad}}</ion-card-subtitle>
+        <ion-card-title style="color:white;">{{ abogado.id_abogado }}. Lic. {{abogado.nombre}} {{abogado.apellido}}</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="4">
+              <p class="ion-text-center" style="color:white;">
+                1.5 Km
+                <br>
+                Cercanía
+              </p>
+            </ion-col>
+            <ion-col size="4">
+              <p class="ion-text-center" style="color:white;">
+                $1300{{abogado.hon_despacho}}
+                <br>
+                Costo p/hr
+              </p>
+            </ion-col>
+            <ion-col size="4">
+              <p class="ion-text-center" style="color:white;">
+                <span>★★★★★</span>
+                <br>
+                5 Servicios
+              </p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+    
+  </ion-content>
+  
+
+  

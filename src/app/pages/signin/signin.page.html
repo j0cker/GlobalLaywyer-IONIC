@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-toolbar color="secondary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref=""></ion-back-button>
+      </ion-buttons>
+      <ion-title>Registrarse</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content class="ion-padding">
+
+    <img class="" src="../../assets/img/logo.png" alt="" style="max-width: 50%; margin-left: 25%; margin-top: 5%;">
+    <p class="ion-text-center">Ayuda Legal al Instante</p>
+    <br>
+    <ion-item>
+      <ion-label position="stacked">Correo Electrónico</ion-label>
+      <ion-input type="email" nmae="email" [(ngModel)]="correo" clearInput></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="password1" clearInput></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Confirmar Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="password2" clearInput></ion-input>
+    </ion-item>
+  <br>
+    <ion-list>
+      <ion-list-header>Seleccione si usted busca servicios legales u ofrece servicios legales:</ion-list-header>
+    
+      <ion-item>
+        <ion-label >Servicios Legales</ion-label>
+        <ion-select placeholder="Select One" [(ngModel)]="serviceT">
+          <ion-select-option value="0">Busco</ion-select-option>
+          <ion-select-option value="1">Ofrezco</ion-select-option>
+        </ion-select>
+      </ion-item>
+    
+    </ion-list>
+
+    <br>
+    <ion-button (click)="service_type(correo, password1, password2, serviceT)" color="secondary" style="margin-top: 10px" expand="block" size="default">Siguiente</ion-button>
+
+</ion-content>

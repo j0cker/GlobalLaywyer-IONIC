@@ -1,0 +1,74 @@
+<ion-header>
+    <ion-toolbar class="balance" color="transparent">
+        <ion-title id="titulo" style="color: white">
+            <img src="../../assets/img/GL-blanco.png" alt="" style="max-width: 20%; margin-top: 2%; margin-left: 40%;">
+        </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="avatar">
+    <p class="ion-text-center" style="font-size: 30px; color: white; ">{{i_nombre}}{{i_apellido}}</p>
+  </div>
+
+  <p class="ion-text-center" style="font-size: 20px;">{{ nombre }} {{ apellido }}</p>
+
+  <ion-card>
+      <ion-item>
+          <ion-card-subtitle>Informacion de Abogado</ion-card-subtitle>
+          <!--<ion-icon slot="end" name="create" color="success"></ion-icon>-->
+      </ion-item>
+
+      <ion-card-content>
+          <p style="font-size: 12px; ">Cédula Profesional: {{ cedula }}</p>
+          <p style="font-size: 12px; ">Idiomas: {{ idiomas }}</p>
+      </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+      <ion-item>
+          <ion-card-subtitle>Informacion Laboral</ion-card-subtitle>
+          <!--<ion-icon slot="end" name="create" color="success"></ion-icon>-->
+      </ion-item>
+
+      <ion-card-content>
+          <p style="font-size: 12px; ">Disponibilidad: {{ disponibilidad }}</p>
+          <p style="font-size: 12px; ">Dias Laborales: {{ diasLaborales }}</p>
+          <p style="font-size: 12px;">Hora de Entrada: {{ hEntrada }}</p>
+          <p style="font-size: 12px; ">Hora de Salida: {{ hSalida }}</p>
+      </ion-card-content>
+  </ion-card>
+
+  <ion-grid>
+
+    <ion-row>
+      <ion-col>
+        <ion-button
+        (click)="cerrarModal()"
+        color="transparent"
+        expand="block"
+        size="default"
+        style="margin-top: 30px; ">
+        <span style="color: #707070">Cancelar</span>
+        </ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button
+        (click)="contactar()"
+        color="secondary"
+        expand="block"
+        size="default"
+        style="margin-top: 30px; ">
+        Contactar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+    
+    
+
+</ion-content>

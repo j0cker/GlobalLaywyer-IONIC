@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-toolbar class="balance" color="transparent">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="inicio" style="color: white;"></ion-back-button>
+      </ion-buttons>
+      <ion-title style="color: white;">Iniciar sesión</ion-title>
+    </ion-toolbar>
+  </ion-header>
+    
+    
+<ion-content class="ion-padding ">
+
+  <img class="" src="../../assets/img/logo.png" alt="" style="max-width: 60%; margin-left: 20%; margin-top: 10%;">
+  <p class="ion-text-center">Ayuda Legal al Instante</p>
+  <br>
+  <ion-item>
+      <ion-label position="stacked">Correo Electrónico</ion-label>
+      <ion-input type="text" [(ngModel)]="emailModel" clearInput></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label position="stacked">Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="passModel" clearInput></ion-input>
+  </ion-item>
+
+  <ion-list>
+    <ion-list-header>Seleccione si usted busca servicios legales u ofrece servicios legales:</ion-list-header>
+  
+    <ion-item>
+      <ion-label >Servicios Legales</ion-label>
+      <ion-select placeholder="Select One" [(ngModel)]="serviceT">
+        <ion-select-option value="0">Busco</ion-select-option>
+        <ion-select-option value="1">Ofrezco</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+  </ion-list>
+  <!--<hr style="background: rgba(255, 255, 255, 0.7)">
+  <ion-label position="floating">Contraseña</ion-label>
+  <ion-input></ion-input><hr style="background: rgba(255, 255, 255, 0.7)">-->
+  <ion-button (click)="entrar(emailModel, passModel, serviceT)" style="margin-top: 30px" color="secondary" expand="block" size="default">Entrar</ion-button>
+  <p class="ion-text-center">¿Olvidaste tu contraseña?</p>
+
+
+
+</ion-content>
+  

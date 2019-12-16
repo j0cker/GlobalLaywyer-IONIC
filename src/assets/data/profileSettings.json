@@ -1,0 +1,22 @@
+[
+    {
+        "icon": "person",
+        "name": "Informacion Personal",
+        "redirectTo": "/dashboard-law"
+    },
+    {
+        "icon": "clipboard",
+        "name": "Reservaciones",
+        "redirectTo": "/"
+    },
+    {
+        "icon": "cash",
+        "name": "Pagos",
+        "redirectTo": "/"
+    },
+    {
+        "icon": "notifications",
+        "name": "Notificaciones",
+        "redirectTo": "/"
+    }
+]

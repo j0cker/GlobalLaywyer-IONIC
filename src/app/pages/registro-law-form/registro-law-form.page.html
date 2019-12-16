@@ -1,0 +1,58 @@
+<ion-header>
+    <ion-toolbar color="secondary">
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref=""></ion-back-button>
+      </ion-buttons>
+      <ion-title>Registro de Abogado</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content class="ion-padding">
+
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12">
+                <ion-text color="dark">
+                    <h5>Formación Académica</h5>
+                </ion-text>
+            </ion-col>
+            <ion-col size="12">
+                <ion-item>
+                    <ion-label position="stacked" color="{{label}}">(*) Escuela</ion-label>
+                    <ion-input type="text" [(ngModel)]="escuela"></ion-input>
+                </ion-item>
+            </ion-col>
+            <ion-col size="12">
+                <ion-item>
+                    <ion-label position="stacked" color="{{label}}">(*) Carrera</ion-label>
+                    <ion-input type="text" [(ngModel)]="carrera"></ion-input>
+                </ion-item>
+            </ion-col>
+            <ion-col size="12">
+                <ion-item>
+                  <ion-label position="stacked" color="{{label}}">(*) Mes de término</ion-label>
+                  <ion-input type="text" [(ngModel)]="mesTermino"></ion-input>
+                </ion-item>
+            </ion-col>
+            <ion-col size="12">
+                <ion-item>
+                    <ion-label position="stacked" color="{{label}}">(*) Año de término</ion-label>
+                    <ion-input type="numer" maxlength="4" [(ngModel)]="anoTermino"></ion-input>
+                </ion-item>
+                <p style="color: #f04141;font-size: 10px;" [hidden]=hide2>* Favor de llenar los campos correctamente</p>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    
+    <br>
+
+    <ion-item color="transparent">
+        <ion-checkbox mode="md" color="secondary" (ionChange)="terminos_change($event)" slot="start"></ion-checkbox>
+        <ion-label color="light" color="{{label2}}" style="font-size: 14px;">(*) Acepto los terminos y condiciones</ion-label>
+    </ion-item>
+
+    <p class="ion-text-center" style="font-size: 14px;"><a (click)="terminos()"><ins>Terminos y condiciones</ins></a></p>
+
+    <ion-button (click)="reg_law(escuela, carrera, mesTermino, anoTermino)" color="secondary" style="margin-top: 10px" expand="block" size="default">Siguiente</ion-button>
+    
+</ion-content>

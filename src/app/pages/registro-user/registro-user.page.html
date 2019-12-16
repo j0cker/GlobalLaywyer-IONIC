@@ -1,0 +1,61 @@
+<ion-header>
+    <ion-toolbar color="secondary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="" color=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>Registro de Usuario</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12">
+                <ion-text color="dark">
+                    <h5>Datos Personales</h5>
+                </ion-text>
+            </ion-col>
+            <ion-col size="12">
+                <ion-item>
+                    <ion-label position="stacked" color="{{label}}">Nombre</ion-label>
+                    <ion-input type="text" [(ngModel)]="nombre"></ion-input>
+                </ion-item>
+            </ion-col>
+            <ion-col size="12">
+                <ion-item>
+                    <ion-label position="stacked" color="{{label}}">Apellido</ion-label>
+                    <ion-input type="text" [(ngModel)]="apellido"></ion-input>
+                </ion-item>
+            </ion-col>
+            <ion-col size="12">
+                <ion-item>
+                    <ion-label position="stacked" color="{{label}}">Correo</ion-label>
+                    <ion-input type="text" [(ngModel)]="correo" disabled="disabled"></ion-input>
+                </ion-item>
+            </ion-col>
+            <ion-col size="12">
+                <ion-item>
+                    <ion-label position="stacked" color="{{label}}">Teléfono</ion-label>
+                    <ion-input type="tel" maxlength="10" [(ngModel)]="telefono"></ion-input>
+                </ion-item>
+                <p style="color: #A50202;font-size: 10px;" [hidden]=hide1>* Favor de llenar los campos correctamente</p>
+            </ion-col>
+            <ion-col size="12">
+                <ion-item>
+                    <ion-label position="stacked" color="{{label}}">Celular</ion-label>
+                    <ion-input type="tel" maxlength="10" [(ngModel)]="cel"></ion-input>
+                </ion-item>
+                <p style="color: #A50202;font-size: 10px;" [hidden]=hide2>* Favor de llenar los campos correctamente</p>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-button
+        (click)="registrarse(nombre, apellido, correo, telefono, cel)"
+        color="secondary"
+        style="margin-top: 10px"
+        expand="block"
+        size="default">Registrarse</ion-button>
+
+</ion-content>

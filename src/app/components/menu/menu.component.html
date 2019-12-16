@@ -1,0 +1,25 @@
+<ion-menu side="start" menuId="perfil" contentId="main">
+  <ion-header>
+    <ion-toolbar color="secondary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle>
+          <ion-item *ngFor="let c of componentes | async" [routerLink]="c.redirectTo">
+            <ion-icon slot="start" [name]="c.icon" color="secondary"></ion-icon>
+            {{c.name}}
+          </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+  <ion-footer>
+      <ion-menu-toggle>
+          <ion-item >
+            <ion-icon slot="start" name="log-out" color="secondary"></ion-icon>
+            Cerrar Sesion
+          </ion-item>
+      </ion-menu-toggle>
+  </ion-footer>
+</ion-menu>
