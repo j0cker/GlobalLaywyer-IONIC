@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-cv-lawyer',
   templateUrl: './cv-lawyer.page.html',
@@ -33,6 +32,10 @@ export class CvLawyerPage implements OnInit {
 
   i_nombre: any; i_apellido: any;
 
+  lat: number;
+  lon: number;
+  total: string;
+
   constructor(private modalCtrl: ModalController, private router: Router) { }
 
   ngOnInit() {
@@ -42,7 +45,8 @@ export class CvLawyerPage implements OnInit {
   }
 
   contactar() {
-    this.router.navigate( ['/contacto-lawyer', this.celular] );
+    this.router.navigate( ['/contacto-lawyer', this.celular, this.cedula] );
+    // this.router.navigate( ['/servicios'] );
     this.cerrarModal();
   }
 

@@ -22,34 +22,89 @@
 
       <ion-card-content>
           <p style="font-size: 12px; ">Cédula Profesional: {{ cedula }}</p>
+          <p style="font-size: 12px; ">Estudios: {{ escuela }}</p>
           <p style="font-size: 12px; ">Idiomas: {{ idiomas }}</p>
       </ion-card-content>
   </ion-card>
 
   <ion-card>
-      <ion-item>
-          <ion-card-subtitle>Informacion Laboral</ion-card-subtitle>
-          <!--<ion-icon slot="end" name="create" color="success"></ion-icon>-->
-      </ion-item>
+    <ion-item>
+        <ion-card-subtitle>Experiencia Laboral</ion-card-subtitle>
+        <!--<ion-icon slot="end" name="create" color="success"></ion-icon>-->
+    </ion-item>
 
-      <ion-card-content>
-          <p style="font-size: 12px; ">Disponibilidad: {{ disponibilidad }}</p>
-          <p style="font-size: 12px; ">Dias Laborales: {{ diasLaborales }}</p>
-          <p style="font-size: 12px;">Hora de Entrada: {{ hEntrada }}</p>
-          <p style="font-size: 12px; ">Hora de Salida: {{ hSalida }}</p>
-      </ion-card-content>
+    <ion-card-content>
+        <p style="font-size: 12px; ">Años de experiencia: 5 años</p>
+        <p style="font-size: 12px; ">Especialidad: Derecho Penal</p>
+    </ion-card-content>
   </ion-card>
 
-  <ion-grid>
+  <ion-card>
+    <ion-item>
+        <ion-card-subtitle>Servicios</ion-card-subtitle>
+        <!--<ion-icon slot="end" name="create" color="success"></ion-icon>-->
+    </ion-item>
 
+    <ion-card-content>
+        <ul style="font-size: 12px; ">
+          <li>Migratorios</li>
+          <li>Juridicos</li>
+        </ul>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-item>
+        <ion-card-subtitle>Disponibilidad</ion-card-subtitle>
+        <!--<ion-icon slot="end" name="create" color="success"></ion-icon>-->
+    </ion-item>
+
+    <ion-card-content>
+        <p style="font-size: 12px; ">Disponibilidad: {{ disponibilidad }}</p>
+        <p style="font-size: 12px; ">Dias Laborales: {{ diasLaborales }}</p>
+        <p style="font-size: 12px;">Horario de servicio: 8:00 am - 9:00 pm</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-item>
+        <ion-card-subtitle>Comentarios</ion-card-subtitle>
+        <!--<ion-icon slot="end" name="create" color="success"></ion-icon>-->
+    </ion-item>
+
+    <ion-card-content>
+      <h4>Ana Estrada</h4>
+      <p style="font-size: 12px; ">Agosto,2019</p>
+      <p style="font-size: 12px; ">
+        <span>★★★★★</span>
+        <br>
+        5 Servicios
+      </p>
+      <p style="font-size: 12px;">"Excelente servicio y atencion"</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button
+    (click)="cerrarModal()"
+    color="transparent"
+    expand="block"
+    size="default">
+    <span style="color: #707070">Reportar Usuario</span>
+  </ion-button>
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+<ion-grid>
     <ion-row>
       <ion-col>
         <ion-button
         (click)="cerrarModal()"
         color="transparent"
         expand="block"
-        size="default"
-        style="margin-top: 30px; ">
+        size="default">
         <span style="color: #707070">Cancelar</span>
         </ion-button>
       </ion-col>
@@ -59,16 +114,12 @@
         (click)="contactar()"
         color="secondary"
         expand="block"
-        size="default"
-        style="margin-top: 30px; ">
+        size="default">
         Contactar
         </ion-button>
       </ion-col>
     </ion-row>
 
   </ion-grid>
-
-    
-    
-
-</ion-content>
+  </ion-toolbar>
+</ion-footer>

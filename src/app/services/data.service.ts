@@ -11,13 +11,17 @@ import { Componente } from '../interfaces/interfaces';
 })
 export class DataService {
 
-  // api = 'http://api.bullandbear-legalpartners.com/api/';
-  api = 'http://127.0.0.1:8000/api/';
+  api = 'http://api.bullandbear-legalpartners.com/api/';
+  // api = 'http://127.0.0.1:8000/api/';
 
   constructor( private http: HttpClient, public toastController: ToastController) { }
 
   getMenuOpts() {
     return this.http.get<Componente[]>('/assets/data/menu.json');
+  }
+
+  getServicios() {
+    return this.http.get<Componente[]>('/assets/data/servicios.json');
   }
 
   getProfileSettings() {
@@ -39,6 +43,7 @@ export class DataService {
     );
   }
 
+  // tslint:disable-next-line: variable-name
   getUserProfile(token: string, id_user: string) {
     // tslint:disable-next-line: max-line-length
     console.log('[DataService][getUserProfile]');
@@ -50,11 +55,23 @@ export class DataService {
     );
   }
 
+  // tslint:disable-next-line: variable-name
   getProfile(token: string, id_user: string) {
     // tslint:disable-next-line: max-line-length
     console.log('[DataService][getProfile]');
     // tslint:disable-next-line: max-line-length
     return this.http.get(this.api + 'lawyer/getProfile?token=' + token + '&id_user=' + id_user).pipe(
+      tap( data => {
+        console.log(data);
+      })
+    );
+  }
+
+  getLaw(cedula: any) {
+    // tslint:disable-next-line: max-line-length
+    console.log('[DataService][getLaw]');
+    // tslint:disable-next-line: max-line-length
+    return this.http.get(this.api + 'lawyer/getLaw?cedula=' + cedula).pipe(
       tap( data => {
         console.log(data);
       })
@@ -112,6 +129,28 @@ export class DataService {
     console.log('[DataService][verifyCode]');
     // tslint:disable-next-line: max-line-length
     return this.http.get(this.api + 'enviarsms?celular=' + celular).pipe(
+      tap( data => {
+        console.log(data);
+      })
+    );
+  }
+
+  sendSMS2(celular: any) {
+    // tslint:disable-next-line: max-line-length
+    console.log('[DataService][sendSMS2]');
+    // tslint:disable-next-line: max-line-length
+    return this.http.get(this.api + 'sms?celular=' + celular).pipe(
+      tap( data => {
+        console.log(data);
+      })
+    );
+  }
+
+  sendSMSConfirm(celular: any) {
+    // tslint:disable-next-line: max-line-length
+    console.log('[DataService][sendSMSConfirm]');
+    // tslint:disable-next-line: max-line-length
+    return this.http.get(this.api + 'smsConfirm?celular=' + celular).pipe(
       tap( data => {
         console.log(data);
       })

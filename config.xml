@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.boogapp.GlobalLawyer" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Global Lawyer</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
@@ -99,6 +99,7 @@
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^4.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
+    <plugin name="cordova-plugin-ios-permissions" source="git" spec="https://github.com/MBuchalik/cordova-plugin-ios-permissions.git#v1.1.1" />
     <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyBG2qkcfyKgIBzOoSnoLhBl_3CHJkS_2js" />
     <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyBG2qkcfyKgIBzOoSnoLhBl_3CHJkS_2js" />
 </widget>

@@ -1,0 +1,12 @@
+[
+    {
+        "icon": "call",
+        "name": "Asistencia telefónica",
+        "precio": "$500"
+    },
+    {
+        "icon": "people",
+        "name": "Servicio presencial",
+        "precio": "$1000"
+    }
+]

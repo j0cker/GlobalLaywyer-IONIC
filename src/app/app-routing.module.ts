@@ -46,7 +46,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/cv-lawyer/cv-lawyer.module').then( m => m.CvLawyerPageModule)
   },
   {
-    path: 'contacto-lawyer/:celular',
+    path: 'contacto-lawyer/:celular/:cedula',
     loadChildren: () => import('./pages/contacto-lawyer/contacto-lawyer.module').then( m => m.ContactoLawyerPageModule)
   },
   {
@@ -113,6 +113,14 @@ const routes: Routes = [
   {
     path: 'verificacion-password',
     loadChildren: () => import('./pages/verificacion-password/verificacion-password.module').then( m => m.VerificacionPasswordPageModule)
+  },
+  {
+    path: 'confirmacion',
+    loadChildren: () => import('./pages/confirmacion/confirmacion.module').then( m => m.ConfirmacionPageModule)
+  },
+  {
+    path: 'pagado/:cedula',
+    loadChildren: () => import('./pages/pagado/pagado.module').then( m => m.PagadoPageModule)
   }
 ];
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../../services/data.service';
-import { ToastController } from '@ionic/angular';
+import { ToastController, LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-verificacion',
@@ -10,14 +10,15 @@ import { ToastController } from '@ionic/angular';
 })
 export class VerificacionPage implements OnInit {
 
+  loading: any;
+
   code: any;
   user: any;
-
 
   escuela: any; carrera: any; mesInicio: any; anoInicio: any; mesTermino: any; anoTermino: any;
 
   // tslint:disable-next-line: max-line-length
-  constructor(private router: ActivatedRoute, private router2: Router, private dataService: DataService, public toastController: ToastController) {
+  constructor(private router: ActivatedRoute, private router2: Router, private dataService: DataService, public toastController: ToastController, private loadingCtrl: LoadingController) {
     this.router.params.subscribe((params: any) => {
       console.log(params);
       this.user = params;
@@ -25,6 +26,19 @@ export class VerificacionPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingCtrl.create({
+      message: 'Por favor espere'
+    });
+    await this.loading.present();
+  }
+
+  dissmissLoading() {
+    setTimeout(() => {
+      this.loading.dismiss();
+    }, 1000);
   }
 
   verify(code: any) {
@@ -35,6 +49,8 @@ export class VerificacionPage implements OnInit {
     } else {
         console.log(this.code);
         console.log(this.user.celular);
+
+        this.presentLoading();
 
         // tslint:disable-next-line: max-line-length
         this.dataService.verifyCode(this.code, this.user.celular)
@@ -60,27 +76,36 @@ export class VerificacionPage implements OnInit {
                       if (data2.success === 'TRUE') {
                         console.log('Prueba de ruta dashboard');
                         this.router2.navigate( ['/tabs-law/home'] );
+                        this.dissmissLoading();
                         this.bien();
                       } else {
                         this.mal(data2.description);
+                        this.dissmissLoading();
                       }
 
                     }, ( error ) => {
-                      console.log(error);
-                      // this.userData = 'Este es el error: ' + error.toString();
-                      this.mal(error);
+                        console.log('Este es el error: ');
+                        console.log(error);
+
+                        // this.userData = 'Este es el error: ' + error.toString();
+                        this.mal('Revise su conexión a internet o contacte al administrador');
+                        this.dissmissLoading();
                     });
 
 
                 } else {
                     this.mal(data.description);
+                    this.dissmissLoading();
                     console.log('Error: ' + data.description);
                 }
 
             }, (error) => {
+                console.log('Este es el error: ');
                 console.log(error);
+
                 // this.userData = 'Este es el error: ' + error.toString();
-                this.mal(error);
+                this.mal('Revise su conexión a internet o contacte al administrador');
+                this.dissmissLoading();
             });
 
 

@@ -14,6 +14,11 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { ComponentsModule } from '../app/components/components.module';
 
+import { Network } from '@ionic-native/network/ngx';
+import { Dialogs } from '@ionic-native/dialogs/ngx';
+import { PayPal } from '@ionic-native/paypal/ngx';
+
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { GoogleMaps } from '@ionic-native/google-maps';
 
 @NgModule({
@@ -31,6 +36,10 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     SplashScreen,
     GoogleMaps,
     HTTP,
+    Network,
+    Dialogs,
+    PayPal,
+    Geolocation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

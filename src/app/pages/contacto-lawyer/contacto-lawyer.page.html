@@ -11,40 +11,25 @@
 
 <ion-content class="ion-padding">
 
-  <ion-item color="transparent">
-      <ion-icon slot="start" name="navigate" size="large" color="secondary" md="ios-navigate"></ion-icon>
-      <h4 class="ion-text-center">Ubiación de usuario</h4>
-  </ion-item>
+  <h3>Servicio a pagar</h3>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let c of servicios" size="6">
+        
+        <ion-button class="balance" color="transparent" expand="block" style="height: 100%;" (click)="paypal(c.name)"> 
+          <div style="margin-top: 10%; margin-bottom: 10%;">
+            <ion-icon color="light" name="{{c.icon}}" size="large"></ion-icon><br>
+            <p style="font-size: 11px; color: #f4f5f8">{{c.name}}</p>
+            <p style="font-size: 11px; color: #f4f5f8">{{c.precio}} x/hora</p>
+          </div>
+        </ion-button>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <div id='mapa'>
   </div>
-
-  <ion-grid>
-
-      <ion-row>
-        <ion-col>
-          <ion-button
-          routerLink = "/pago-user"
-          color="transparent"
-          expand="block"
-          size="default"
-          style="margin-top: 30px; ">
-          <ion-text color="secondary">Llamar</ion-text>
-          </ion-button>
-        </ion-col>
-  
-        <ion-col>
-          <ion-button
-          routerLink = "/pago-user"
-          color="secondary"
-          expand="block"
-          size="default"
-          style="margin-top: 30px; ">
-          Asistencia Personal
-          </ion-button>
-        </ion-col>
-      </ion-row>
-  
-    </ion-grid>
 
 </ion-content>

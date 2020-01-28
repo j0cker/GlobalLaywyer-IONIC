@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../../services/data.service';
-import { ToastController, ModalController } from '@ionic/angular';
+import { ToastController, ModalController, LoadingController } from '@ionic/angular';
 import {TerminosPage} from '../terminos/terminos.page';
 
 
@@ -12,6 +12,8 @@ import {TerminosPage} from '../terminos/terminos.page';
   styleUrls: ['./registro-law-form.page.scss'],
 })
 export class RegistroLawFormPage implements OnInit {
+
+  loading: any;
 
   user: any;
   label = 'medium'; label2 = 'medium';
@@ -24,7 +26,7 @@ export class RegistroLawFormPage implements OnInit {
   checkTerminos: boolean;
 
   // tslint:disable-next-line: max-line-length
-  constructor(private router: ActivatedRoute, private router2: Router, public toastController: ToastController, private dataService: DataService, private modalCtrl: ModalController) {
+  constructor(private router: ActivatedRoute, private router2: Router, public toastController: ToastController, private dataService: DataService, private modalCtrl: ModalController, private loadingCtrl: LoadingController) {
     this.router.params.subscribe((params: any) => {
       console.log(params);
       this.user = params;
@@ -32,6 +34,19 @@ export class RegistroLawFormPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingCtrl.create({
+      message: 'Por favor espere'
+    });
+    await this.loading.present();
+  }
+
+  dissmissLoading() {
+    setTimeout(() => {
+      this.loading.dismiss();
+    }, 1000);
   }
 
   async terminos() {
@@ -75,6 +90,8 @@ export class RegistroLawFormPage implements OnInit {
       if (this.flag2 === true) {
         if (this.checkTerminos === true) {
 
+          this.presentLoading();
+
           this.dataService.sendSMS(this.user.celular)
             .subscribe((data: any) => {
 
@@ -82,22 +99,26 @@ export class RegistroLawFormPage implements OnInit {
                 // this.userData = data;
                 // tslint:disable-next-line: triple-equals
                 if (data.success == 'TRUE') {
-                    // this.router2.navigate( ['/dashboard'] ); tslint:disable-next-line:
-                    // max-line-length
                     // tslint:disable-next-line: max-line-length
                     this.router2.navigate(['/verificacion', this.user.correo, this.user.password, this.user.cedula, this.user.nombre, this.user.apellido, this.user.disponibilidad, this.user.celular, this.user.idiomas, this.user.diasLaborales, this.user.hEntrada, this.user.hSalida, this.user.address, this.user.long, this.user.lat, this.escuela, this.carrera, this.mesTermino, this.anoTermino]);
-                    // this.bien();
-                    console.log('Funciono API Send SMS');
+
+                    this.dissmissLoading();
+                    // console.log('Funciono API Send SMS');
 
                 } else {
                     this.mal(data.description);
+
+                    this.dissmissLoading();
                     console.log('Error: ' + data.description);
                 }
 
             }, (error) => {
+                console.log('Este es el error: ');
                 console.log(error);
+
                 // this.userData = 'Este es el error: ' + error.toString();
-                this.mal(error);
+                this.mal('Revise su conexión a internet o contacte al administrador');
+                this.dissmissLoading();
             });
 
         } else {

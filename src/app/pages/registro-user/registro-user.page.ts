@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
-import { ToastController } from '@ionic/angular';
+import { ToastController, LoadingController } from '@ionic/angular';
 
 
 @Component({
@@ -10,6 +10,8 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./registro-user.page.scss'],
 })
 export class RegistroUserPage implements OnInit {
+
+  loading: any;
 
   user: any;
   nombre: any;
@@ -23,7 +25,7 @@ export class RegistroUserPage implements OnInit {
   hide1 = true; hide2 = true;
 
   // tslint:disable-next-line: max-line-length
-  constructor(private router: ActivatedRoute, private router2: Router, private dataService: DataService, public toastController: ToastController) {
+  constructor(private router: ActivatedRoute, private router2: Router, private dataService: DataService, public toastController: ToastController, private loadingCtrl: LoadingController) {
     this.router.params.subscribe((params: any) => {
       console.log(params);
       this.user = params;
@@ -32,6 +34,19 @@ export class RegistroUserPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingCtrl.create({
+      message: 'Por favor espere'
+    });
+    await this.loading.present();
+  }
+
+  dissmissLoading() {
+    setTimeout(() => {
+      this.loading.dismiss();
+    }, 1000);
   }
 
   registrarse(nombre: any, apellido: any, correo: any, telefono: any, cel: any) {

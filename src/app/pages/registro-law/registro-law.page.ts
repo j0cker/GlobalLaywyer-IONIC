@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { ToastController, LoadingController } from '@ionic/angular';
 import { DataService } from '../../services/data.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { DataService } from '../../services/data.service';
 })
 export class RegistroLawPage implements OnInit {
 
+  loading: any;
   user: any;
   label = 'medium';
   // tslint:disable-next-line: max-line-length
@@ -18,7 +19,7 @@ export class RegistroLawPage implements OnInit {
   flag1: boolean; flag2: boolean; flag3: boolean; flag4: boolean;
 
   // tslint:disable-next-line: max-line-length
-  constructor(private router: ActivatedRoute, private router2: Router, public toastController: ToastController, private dataService: DataService ) {
+  constructor(private router: ActivatedRoute, private router2: Router, public toastController: ToastController, private dataService: DataService, private loadingCtrl: LoadingController) {
     this.router.params.subscribe((params: any) => {
       console.log(params);
       this.user = params;
@@ -27,6 +28,79 @@ export class RegistroLawPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingCtrl.create({
+      message: 'Por favor espere'
+    });
+    await this.loading.present();
+  }
+
+  dissmissLoading() {
+    setTimeout(() => {
+      this.loading.dismiss();
+    }, 1000);
+  }
+
+  // tslint:disable-next-line: max-line-length
+  reg_law2(cedula: any, nombre: any, apellido: any, correo: any, disponibilidad: any, celular: any, idioma: any, diasLaborales: any, hEntrada: any, hSalida: any) {
+    // tslint:disable-next-line: max-line-length
+    if (cedula == '' || cedula == undefined || nombre == '' || nombre == undefined || apellido == '' || apellido == undefined || correo == '' || correo == undefined || disponibilidad == '' || disponibilidad == undefined || celular == '' || celular == undefined || idioma == '' || idioma == undefined || diasLaborales == '' || diasLaborales == undefined || hEntrada == '' || hEntrada == undefined || hSalida == '' || hSalida == undefined) {
+      this.completo();
+      this.label = 'danger';
+    } else {
+      // this.label = 'light';
+
+      if (cedula.length < 7) {
+        this.hide1 = false;
+        // console.log(this.hide);
+        this.flag1 = false;
+      } else {
+        this.hide1 = true;
+        this.flag1 = true;
+      }
+      if (celular.length < 10) {
+        this.hide2 = false;
+        // console.log(this.hide);
+        this.flag2 = false;
+      } else {
+        this.hide2 = true;
+        this.flag2 = true;
+      }
+
+      if (this.flag1 === true && this.flag2 === true) {
+        // console.log('Cédula: ' + cedula);
+        this.presentLoading();
+
+        this.dataService.verifyCedula(cedula)
+        .subscribe( (data: any) => {
+
+          if (data.success === 'TRUE') {
+            // Si la Cédula profesional existe
+            const idiomas: any = JSON.stringify(idioma);
+            const diasLaborales2: any = JSON.stringify(diasLaborales);
+
+            // tslint:disable-next-line: max-line-length
+            this.router2.navigate( ['/registro-law-ubi', this.user.correo, this.user.password, cedula, nombre, apellido, disponibilidad, celular, idiomas, diasLaborales2, hEntrada, hSalida] );
+            this.dissmissLoading();
+
+          } else {
+            this.mal(data.description);
+            this.dissmissLoading();
+          }
+
+        }, ( error ) => {
+          console.log('Este es el error: ');
+          console.log(error);
+          // this.userData = 'Este es el error: ' + error.toString();
+          this.mal('Revise su conexión a internet o contacte al administrador');
+          this.dissmissLoading();
+        });
+      }
+
+    }
+
   }
 
   // tslint:disable-next-line: max-line-length
@@ -56,37 +130,16 @@ export class RegistroLawPage implements OnInit {
       }
 
       if (this.flag1 === true && this.flag2 === true) {
-        console.log('Cédula: ' + cedula);
-        this.dataService.verifyCedula(cedula)
-        .subscribe( (data: any) => {
+        // console.log('Cédula: ' + cedula);
+        this.presentLoading();
 
-          if (data.success === 'TRUE') {
-            // Si la Cédula profesional existe
-            const idiomas: any = JSON.stringify(idioma);
-            const diasLaborales2: any = JSON.stringify(diasLaborales);
-            /*
-            console.log('Correo: ' + this.user.correo);
-            console.log('Contraseña: ' + this.user.password);
-            console.log('Cedula: ' + cedula);
-            console.log('Nombre: ' + nombre);
-            console.log('Apellido: ' + apellido);
-            console.log('Disponibilidad: ' + disponibilidad);
-            console.log('Celular: ' + celular);
-            console.log(idioma);
-            console.log(idiomas);
-            console.log('Dias Laborables: ' + diasLaborales);
-            */
-            // tslint:disable-next-line: max-line-length
-            this.router2.navigate( ['/registro-law-ubi', this.user.correo, this.user.password, cedula, nombre, apellido, disponibilidad, celular, idiomas, diasLaborales2, hEntrada, hSalida] );
-          } else {
-            this.mal(data.description);
-          }
+        const idiomas: any = JSON.stringify(idioma);
+        const diasLaborales2: any = JSON.stringify(diasLaborales);
 
-        }, ( error ) => {
-          console.log(error);
-          // this.userData = 'Este es el error: ' + error.toString();
-          this.mal(error);
-        });
+        // tslint:disable-next-line: max-line-length
+        this.router2.navigate( ['/registro-law-ubi', this.user.correo, this.user.password, cedula, nombre, apellido, disponibilidad, celular, idiomas, diasLaborales2, hEntrada, hSalida] );
+        this.dissmissLoading();
+
       }
 
     }
@@ -108,7 +161,7 @@ export class RegistroLawPage implements OnInit {
     const toast = await this.toastController.create({
       message: msj,
       duration: 4000,
-      color: 'danger',
+      color: 'dark',
       position: 'bottom'
     });
     toast.present();
