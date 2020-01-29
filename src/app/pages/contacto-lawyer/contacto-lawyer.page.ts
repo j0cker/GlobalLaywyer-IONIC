@@ -160,8 +160,9 @@ export class ContactoLawyerPage implements OnInit {
       this.payPal.prepareToRender('PayPalEnvironmentProduction', new PayPalConfiguration({
         // Only needed if you get an "Internal Service Error" after PayPal login!
         // payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
+        languageOrLocale: 'es_MX'
       })).then(() => {
-        const payment = new PayPalPayment(this.paymentAmount, 'MXN', serviceLaw , 'sale');
+        let payment = new PayPalPayment(this.paymentAmount, 'MXN', serviceLaw , 'sale');
         this.payPal.renderSinglePaymentUI(payment).then(() => {
 
           this.presentLoading();
